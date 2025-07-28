@@ -50,14 +50,9 @@ function Menu() {
             from our stone oven, all organic, all delicious.
           </p>
           <ul className="pizzas">
-            {pizzaData
-              .map((value, index) =>
-                value.soldOut ? (
-                  <SoldOutPizza key={index} obj={value} />
-                ) : (
-                  <Pizza key={index} obj={value} />
-                )
-              )}
+            {pizzaData.map((value, index) => (
+              <Pizza key={index} obj={value} />
+            ))}
           </ul>
         </>
       ) : (
@@ -68,29 +63,16 @@ function Menu() {
 }
 function Pizza({ obj }) {
   return (
-    <li className="pizza">
+    <li className={`pizza ${obj.soldOut ? "sold-out" : ""}`}>
       <img src={obj.photoName} alt={obj.name} />
       <div>
         <h3>{obj.name}</h3>
         <p>{obj.ingredients}</p>
-        <span>${obj.price.toFixed(2)}</span>
+        <span>${ obj.soldOut ? "SOLD OUT" : obj.price.toFixed(2)}</span>
       </div>
     </li>
   );
 }
-function SoldOutPizza({ obj }) {
-  return (
-    <li className="pizza sold-out">
-      <img src={obj.photoName} alt={obj.name} />
-      <div>
-        <h3>{obj.name}</h3>
-        <p>{obj.ingredients}</p>
-        <span>SOLD OUT</span>
-      </div>
-    </li>
-  );
-}
-
 function Button() {
   return <button className="btn">Order Now</button>;
 }
