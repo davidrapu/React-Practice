@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import profileImg from './assets/profile-image.jpg'
+import "./App.css";
+import profileImg from "./assets/profile-image.jpg";
+import { skills } from "./data";
 
 function App() {
-  const langs = ['HTML + CSS', 'JavaScript', 'Web Design', 'Git and GitHub', 'React', ]
   return (
     <div className="box">
       <Avatar />
       <Description />
       <div className="progLangContainer">
-        {langs.map((value, index) => (
-          <Language key={index} codeLang={value} />
+        {skills.map((value, index) => (
+          <Language
+            key={index}
+            codeLang={value.skill}
+            level={value.level}
+            colr={value.color}
+          />
         ))}
       </div>
     </div>
@@ -20,25 +24,31 @@ function Avatar() {
   return <img src={profileImg} alt="profile Image" />;
 }
 function Description() {
-  return <div className='descBox'>
-    <h1>David Rapu</h1>
-    <span>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus quis labore aut excepturi, repellendus omnis sunt delectus velit cupiditate, enim libero in! Dicta saepe beatae officiis. Maiores ex ullam praesentium!
-    </span>
-  </div>
-}
-
-function Language(props) {
-  const levels = ["💀", "😎", "🤓"];
-  const col = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
   return (
-    <div style={{ backgroundColor: col  }} className="progLang">
-      <span>{props.codeLang}</span>
-      <span style={{ marginLeft: "1em" }}>
-        {levels[Math.floor(Math.random() * levels.length)]}
+    <div className="descBox">
+      <h1>David Rapu</h1>
+      <span>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus quis
+        labore aut excepturi, repellendus omnis sunt delectus velit cupiditate,
+        enim libero in! Dicta saepe beatae officiis. Maiores ex ullam
+        praesentium!
       </span>
     </div>
   );
 }
 
-export default App
+function Language({ codeLang, level, colr }) {
+  const levels = {
+    beginner: "💀",
+    intermediate: "😎",
+    advanced: "🤓",
+  };
+  return (
+    <div style={{ backgroundColor: colr }} className="progLang">
+      <span>{codeLang}</span>
+      <span style={{ marginLeft: "1em" }}>{levels[level]}</span>
+    </div>
+  );
+}
+
+export default App;
