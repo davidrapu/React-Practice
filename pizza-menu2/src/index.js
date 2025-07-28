@@ -8,6 +8,7 @@ function App() {
     <div className="container">
       <Header />
       <Menu />
+      <Button />
       <Footer />
     </div>
   );
@@ -24,7 +25,7 @@ function Footer() {
   openingTime.setHours(9, 0, 0, 0);
 
   const closingTime = new Date();
-  closingTime.setHours(18, 0, 0, 0);
+  closingTime.setHours(21, 0, 0, 0);
 
   const now = Date.now();
 
@@ -32,7 +33,7 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We are currently{" "}
+      {new Date().toLocaleTimeString("en-US")}. We are currently{" "}
       {isOpen ? "open" : "closed"}.
     </footer>
   );
@@ -41,26 +42,42 @@ function Menu() {
   return (
     <div className="menu">
       <h2>Menu</h2>
-      {pizzaData.map((value, index) => (
-        <div className="Pizzas">
-          <Pizza key={index} obj={value} />
-        </div>
-      ))}
+
+      {pizzaData.length > 0 ? (
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All from
+            our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzaData
+              .filter((val) => !val.soldOut)
+              .map((value, index) => (
+                <Pizza key={index} obj={value} />
+              ))}
+          </ul>
+        </>
+      ) : (
+        <h3>No Pizza's availble</h3>
+      )}
     </div>
   );
 }
-function Pizza(props) {
-  console.log(props)
+function Pizza({ obj }) {
   return (
-    <div className="pizza">
-      <img src={props.obj.photoName} alt={props.obj.name} />
+    <li className="pizza">
+      <img src={obj.photoName} alt={obj.name} />
       <div>
-        <h3>{props.obj.name}</h3>
-        <p>{props.obj.ingredients}</p>
-        <span>${props.obj.price.toFixed(2)}</span>
+        <h3>{obj.name}</h3>
+        <p>{obj.ingredients}</p>
+        <span>${obj.price.toFixed(2)}</span>
       </div>
-    </div>
+    </li>
   );
+}
+
+function Button() {
+  return <button className="btn">Order Now</button>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
