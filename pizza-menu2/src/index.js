@@ -46,15 +46,18 @@ function Menu() {
       {pizzaData.length > 0 ? (
         <>
           <p>
-            Authentic Italian cuisine. 6 creative dishes to choose from. All from
-            our stone oven, all organic, all delicious.
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
           </p>
           <ul className="pizzas">
             {pizzaData
-              .filter((val) => !val.soldOut)
-              .map((value, index) => (
-                <Pizza key={index} obj={value} />
-              ))}
+              .map((value, index) =>
+                value.soldOut ? (
+                  <SoldOutPizza key={index} obj={value} />
+                ) : (
+                  <Pizza key={index} obj={value} />
+                )
+              )}
           </ul>
         </>
       ) : (
@@ -71,6 +74,18 @@ function Pizza({ obj }) {
         <h3>{obj.name}</h3>
         <p>{obj.ingredients}</p>
         <span>${obj.price.toFixed(2)}</span>
+      </div>
+    </li>
+  );
+}
+function SoldOutPizza({ obj }) {
+  return (
+    <li className="pizza sold-out">
+      <img src={obj.photoName} alt={obj.name} />
+      <div>
+        <h3>{obj.name}</h3>
+        <p>{obj.ingredients}</p>
+        <span>SOLD OUT</span>
       </div>
     </li>
   );
