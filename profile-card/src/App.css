@@ -26,8 +26,8 @@
   margin: 0;
   background-color: lightblue;
 }
-.descBox h3{
-  margin: 0.2em 0 0.9em 0;
+.descBox h1{
+  margin: 0em 0 0.4em 0;
 }
 .box .progLangContainer{
   display: flex;

@@ -21,7 +21,7 @@ function Avatar() {
 }
 function Description() {
   return <div className='descBox'>
-    <h3>David Rapu</h3>
+    <h1>David Rapu</h1>
     <span>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus quis labore aut excepturi, repellendus omnis sunt delectus velit cupiditate, enim libero in! Dicta saepe beatae officiis. Maiores ex ullam praesentium!
     </span>
