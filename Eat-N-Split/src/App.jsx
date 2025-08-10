@@ -24,19 +24,23 @@ import { useState } from "react";
     },
   ];
 export default function App() {
+  // Global States
   const [friends, setFriends] = useState(friendsList)
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedFriendId, setSelectedFriendId] = useState(null);
+
+  // Handlers
   function handleOpenForm(){
     setIsOpen((v) => (!v))
   }
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList friendList={friends} />
+        <FriendsList selectedFriendId={selectedFriendId} setSelectedFriendId={setSelectedFriendId} friendList={friends} />
         <AddFriendForm setFriends={setFriends} isOpen={isOpen} />
         <Button onClick={handleOpenForm}> {isOpen ? "Close" : "Add Friend"} </Button>
       </div>
-      <SplitBillForm />
+      <SplitBillForm selectedFriendId={selectedFriendId} friendList={friends} setFriendsList={setFriends} />
     </div>
   );
 }

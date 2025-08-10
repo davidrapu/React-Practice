@@ -1,10 +1,13 @@
 import Button from "./Button";
 
-export default function UserCard({friendObj}){
-    // id: 118836,
-    // name: "Clark",
-    // image: "https://i.pravatar.cc/48?u=118836",
-    // balance: -7,
+export default function UserCard({friendObj, setSelectedFriendId, selectedFriendId}){
+    // handlers
+    function handleSelect(){
+        setSelectedFriendId(id => {
+            if (id === friendObj.id) return null;
+            return friendObj.id;
+        });
+    }
     return (
         <li>
             <img src={friendObj.image} alt={friendObj.name} />
@@ -12,7 +15,11 @@ export default function UserCard({friendObj}){
             {friendObj.balance < 0 && <p className="red">You owe {friendObj.name} ${Math.abs(friendObj.balance)} </p>}
             {friendObj.balance > 0 && <p className="green">{friendObj.name} owes you ${friendObj.balance} </p>}
             {friendObj.balance === 0 && <p>You and {friendObj.name} are even </p>}
-            <Button>Select</Button>
+            <Button 
+            className={friendObj.id === selectedFriendId ? "selected" : ""} 
+            onClick={handleSelect}>
+                {friendObj.id === selectedFriendId ? "Close" : "Select"}
+            </Button>
         </li>
     )
 }
