@@ -1,0 +1,50 @@
+
+C:\Users\user\Documents\Programming\Web dev\react
+├── Eat-N-Split
+|  ├── eslint.config.js
+|  ├── index.html
+|  ├── node_modules
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── public
+|  ├── README.md
+|  ├── src
+|  └── vite.config.js
+├── pizza-menu2
+|  ├── node_modules
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── public
+|  ├── README.md
+|  └── src
+├── profile-card
+|  ├── eslint.config.js
+|  ├── index.html
+|  ├── node_modules
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── public
+|  ├── README.md
+|  ├── src
+|  └── vite.config.js
+├── README2.md
+├── steps
+|  ├── node_modules
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── public
+|  ├── README.md
+|  └── src
+├── structure.txt
+└── travel-list
+   ├── eslint.config.js
+   ├── index.html
+   ├── node_modules
+   ├── package-lock.json
+   ├── package.json
+   ├── public
+   ├── README.md
+   ├── src
+   └── vite.config.js
+
+directory: 20 file: 26
