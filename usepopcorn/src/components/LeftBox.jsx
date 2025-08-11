@@ -1,15 +1,20 @@
-import Button from "./Button"
+import { useState } from "react";
+import Box from "./Box";
 
 export default function LeftBox({movies}){
+    const [isOpen, setIsOpen] = useState(true);
     return (
-        <div className="box">
-            <Button className="btn-toggle">-</Button>
-            <ul className="list">
-                {movies?.map((v) => (
-                    <MovieListCard key={v.imdbID} movie={v} />
-                ))}
-            </ul>
-        </div>
+        <Box isOpen={isOpen} setIsOpen={setIsOpen}>
+            {isOpen &&
+                <>
+                    <ul className="list">
+                        {movies?.map((v) => (
+                            <MovieListCard key={v.imdbID} movie={v} />
+                        ))}
+                    </ul>
+                </>
+            }
+        </Box>
     )
 }
 
